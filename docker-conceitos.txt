@@ -1,0 +1,25 @@
+Docker um ferramenta para  criação de processos isolados.
+
+O conceito de container já existe a bastante tempo antes do docker , o kernel do linux possui todos esses processos.
+
+Conceitos para se trabalhar com container no linux.
+
+Namespaces - tecnologia responsável por executar processo dentro de processo.(referente ao isolamento).
+Cgroups - limita a quantidade de processamento entre os processos.
+OverlayFs - responsável por gerenciar 
+
+Imagem X Container 
+
+Imagem - template de um container, apartir desse template podemos criar o container.
+
+
+Arquitetura do Docker 
+
+Docker Host - Responsável por gerenciar o host docker na máquina.
+Docker Deamon - responsável por gerenciar os container e imagens
+Docker Client - é uma api responsável por comunicar o docker client com o docker daemon.
+Docker Registry - responsável por armazenar as imagens docker.
+
+docker container run --rm hello-world  (executa o  container e o remove na sequência).
+docker container run -it (vai nos permitir accessar o terminal do container).
+docker containe run -d (nos permite executar uma aplicação no modo detached)
