@@ -1,0 +1,43 @@
+### Tipos de network bridge, host, macvlan, none
+
+## bridge - permite conectar mais de dois containers.
+## host - vai conectar o container com a máquina local.
+## macvlan - vai conectar na rede de infra da máquina.
+## none - não conecta em nenhuma rede 
+
+version: '3.9'
+
+
+
+services:
+  postgres:
+    image: postgres:13.13
+    container_name: kube-news-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    networks:
+     - kubenews_net
+  kubenews:
+    container_name: kube-news-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - '8080:8080'
+    environment: 
+      DB_DATABASE: kubedevnews
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_HOST: postgres ## devemos usar o mome do serviço para conectar no outro container.
+    depends_on: 
+     - postgres
+    networks: 
+     - kubenews_net
+
+networks:
+   kubenews_net:
+     driver: bridge

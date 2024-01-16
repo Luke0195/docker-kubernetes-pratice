@@ -23,3 +23,13 @@ Docker Registry - responsável por armazenar as imagens docker.
 docker container run --rm hello-world  (executa o  container e o remove na sequência).
 docker container run -it (vai nos permitir accessar o terminal do container).
 docker containe run -d (nos permite executar uma aplicação no modo detached)
+
+OverlayFS(Overlay File System)
+
+As camadas de diretório irão sendo criadas sempre que houver uma alteração na imagem. As camadas criadas são apenas  para leitura.
+
+docker image inspect(id da imagem) - nos auxilia no monitoramento da imagem.
+docker image prune -> remove todas as imagens sem referência.
+
+docker tag (nome da imagem) (novo nome da imagem author/projeto:versao)
+docker-compose up -d --build - gera uma nova versão da imagem.
