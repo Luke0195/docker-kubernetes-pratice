@@ -1,0 +1,29 @@
+## define o grupo de api que vamos usar 
+apiVersion: apps/v1  
+## tipo de serviço.
+kind: Deployment
+metadata:
+  name: postgre
+spec: 
+  ## está relacionado ao deployment e o replicaset
+  selector:  
+    matchLabels: 
+     app: postgre
+  ## definição do pod.
+  template:
+    metadata:
+      labels:
+       app: postgre
+    spec:
+      containers:
+       - name: postgre
+         image: postgres:13.13
+         ports:
+          - containerPort: 5432
+         env:
+          - name: POSTGRES_USER
+            value: root
+          - name: POSTGRES_PASSWORD
+            value: root
+          - name: POSTGRES_DB
+            value: kubedevnews
