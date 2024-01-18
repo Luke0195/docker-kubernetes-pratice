@@ -1,3 +1,5 @@
+## Nos cenário local devemos usar o nodePort e o loadBalance na cloud.
+## O service é responsável por conectar os pods 
 ## define o grupo de api que vamos usar 
 apiVersion: apps/v1  
 ## tipo de serviço.
@@ -27,3 +29,59 @@ spec:
             value: root
           - name: POSTGRES_DB
             value: kubedevnews
+
+### Service do postgre
+---
+apiVersion: v1
+kind: Service
+metadata: 
+ name: postgre
+spec:
+  selector: 
+   app: postgre
+  ports:
+   - port: 5432
+
+## deveployment do app
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: kubedevnews 
+spec:
+  replicas: 4
+  selector:
+   matchLabels: 
+    app: kubedevnews
+  template:
+    metadata:
+     labels: 
+      app: kubedevnews
+    spec:
+     containers:
+      - name: kubedevnews
+        image: luke0195/kube-news:v1
+        ports:
+         - containerPort: 8080
+        env:
+         - name: DB_DATABASE
+           value: kubedevnews
+         - name: DB_USERNAME
+           value: root
+         - name: DB_PASSWORD
+           value: root
+         - name: DB_HOST
+           value: postgre
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubedevnews
+spec:
+  selector:
+    app: kubedevnews
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30000 ## vai definir a porta que será usada o service.
+  type: NodePort
