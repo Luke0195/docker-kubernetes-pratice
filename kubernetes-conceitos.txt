@@ -1,0 +1,57 @@
+O kubernetes é um orquestrador de containers, com ele podemos gerenciar os recursos dos containers.
+* O kubernetes foi criado pelo google em 2014.
+* Originado do projeto BORG.
+* O kubernetes é o principal orquestrador de container do mercado.
+
+Cluster Kubernetes - É um conjunto de máquinas interligadas, cada máquina ira exercer um de dois papeis possíveis, control plane, worker Node
+
+
+Arquitetura do kubernetes 
+
+
+Control Plane - é responsável por gerenciar o cluster kubernetes
+Worker Node - Quem ira executar os containers.
+
+Api-Server(Control Plane) - é ponto de comunicação com o kubernetes.
+ETCD (Control Plane) - banco de chave e valor para armazenar os dados no kubernetes.
+Scheduler (Control Plane) - A analise a especificação do o que será executado.
+Controller Manager (Control Plane) - Gerenciar todos os controlladores do kubernetes (exemplo , pods, workersnodes)
+Could Controller Manager - Gerenciar todos os controlladores do  provedor de cloud.
+
+Kube-Proxy(Worker Node) - será responsável por fazer a comunicação com o cluster kubernetes.
+Kubelet - garanti a comunição e a execução com o container naquele workernode.
+
+k3d - ferramenta para criação de cluster kubernetes baseado em containers.
+kubectl - é a forma de nos comunicação com o nossoa api-server.
+
+k3d cluster create (cria um cluster kubernetes)
+
+kubectl get nodes - (lista dos nós do cluster kubernetes)
+kubectl get nodes - (lista todos os cluster kubernetes)
+k3d cluster delete (nome do cluster) - deleta o cluster kubernetes.
+
+3d cluster create meucluster --servers 3  --agents 3 (servers - Control Plane , agents - Worker nodes)
+
+Elementos de deploy do kubernetes.
+
+Pod - É ele que executa o container dentro do kubernetes.
+
+Replica Set - É responsável por manter a escalabilidade e resiliência do pod (caso um pod seja excluido ou deletado o replica set ira fazer uma cópia do mesmo).
+
+Labels e Selectors - Toda a interação entre os pods e  o cluster é feita label e o selectors. (chave e valor.) o replica set é gerenciado atráves do label e selector.
+
+Deployment - O deployment fica em da arquiterura e poderá atualizar a versão do replica set  criando novos pods no novo replicaset.
+
+Cascata arquitetura do kubernetes
+  1 - Deployment
+  2 - Replica Set
+  3 - Pod
+
+Arquivo manifesto vai conter as informações do kubernetes.
+kubectl api-resources - lista os recursos do kubernetes.
+kubectl apply -f k8s/deployment.yaml - Executa os recursos. 
+kubect get deployment  - lista os deployments.
+
+kubectl port-forward  pod/postgre-6bc9d54f6f-lpjww 5432:5432 (faz o port binding to pod)
+
+services - nos permite que os pods sejam conectados um com os outros.
