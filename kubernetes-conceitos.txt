@@ -55,3 +55,5 @@ kubect get deployment  - lista os deployments.
 kubectl port-forward  pod/postgre-6bc9d54f6f-lpjww 5432:5432 (faz o port binding to pod)
 
 services - nos permite que os pods sejam conectados um com os outros.
+ kubectl rollout undo deployment kubedevnews (volta a versão do sistema)
+ kubectl delete -f k8s/deployment.yaml(remove todos os serviços utilizados.)

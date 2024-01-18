@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="yLjQ41iI8LckPHoiJgIl" name="Page-1">
-        <mxGraphModel dx="1134" dy="411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1074" dy="384" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -98,7 +98,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="34" value="Send Elastic Bean Stalk" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="544.47" y="360" width="160" height="30" as="geometry"/>
+                    <mxGeometry x="560" y="360" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="Observability With Grafana" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="740" y="460" width="170" height="30" as="geometry"/>
